@@ -349,15 +349,42 @@ function onPointerMove(evt) {
         }
     }
 
-    if (doHover) {
-        if (popupText) {
-			content.innerHTML = popupText;
+    if (popupText) {
+    try {
+        if (typeof lyr_WilayahPelabuhan_4 !== 'undefined' && currentLayer === lyr_WilayahPelabuhan_4) {
+            // Hapus popup fullscreen lama
+            document.querySelectorAll('.fullscreen-popup').forEach(e => e.remove());
+
+            // Sembunyikan popup bawaan agar tidak dobel
+            container.style.display = 'none';
+
+            // Buat popup fullscreen
+            var fp = `
+            <div class="fullscreen-popup" role="dialog" aria-modal="true">
+                <div class="popup-content">
+                    <h2 style="text-align:center; margin:0 0 10px;">Detail Wilayah Pelabuhan</h2>
+                    ${popupText}
+                    <div style="text-align:center; margin-top:12px;">
+                        <button class="close-btn" onclick="document.querySelectorAll('.fullscreen-popup').forEach(e=>e.remove());">Tutup</button>
+                    </div>
+                </div>
+            </div>`;
+            document.body.insertAdjacentHTML('beforeend', fp);
+            } else {
+                // Jalankan popup default
+                content.innerHTML = popupText;
+                container.style.display = 'block';
+                overlayPopup.setPosition(coord);
+            }
+        } catch (err) {
+            console.error("Error custom popup:", err);
+            content.innerHTML = popupText;
             container.style.display = 'block';
             overlayPopup.setPosition(coord);
-        } else {
-            container.style.display = 'none';
-            closer.blur();
         }
+    } else {
+        container.style.display = 'none';
+        closer.blur();
     }
 };
 
