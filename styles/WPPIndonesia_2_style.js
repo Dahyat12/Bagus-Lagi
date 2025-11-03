@@ -6,7 +6,7 @@ function categories_WPPIndonesia_2(feature, value, size, resolution, labelText,
                 var valueStr = (value !== null && value !== undefined) ? value.toString() : 'default';
                 switch(valueStr) {case 'WPP 571':
                     return [ new ol.style.Style({
-        stroke: new ol.style.Stroke({color: 'rgba(35,35,35,0.35600000000000004)', lineDash: null, lineCap: 'butt', lineJoin: 'miter', width: 0.988}),fill: new ol.style.Fill({color: 'rgba(0,217,255,0.35600000000000004)'}),
+        stroke: new ol.style.Stroke({color: 'rgba(35,35,35,0.356)', lineDash: null, lineCap: 'butt', lineJoin: 'miter', width: 0.988}),fill: new ol.style.Fill({color: 'rgba(215,25,28,0.356)'}),
         text: createTextStyle(feature, resolution, labelText, labelFont,
                               labelFill, placement, bufferColor,
                               bufferWidth)
@@ -14,7 +14,7 @@ function categories_WPPIndonesia_2(feature, value, size, resolution, labelText,
                     break;
 case 'WPP 572':
                     return [ new ol.style.Style({
-        stroke: new ol.style.Stroke({color: 'rgba(35,35,35,0.35600000000000004)', lineDash: null, lineCap: 'butt', lineJoin: 'miter', width: 0.988}),fill: new ol.style.Fill({color: 'rgba(0,40,255,0.35600000000000004)'}),
+        stroke: new ol.style.Stroke({color: 'rgba(35,35,35,0.356)', lineDash: null, lineCap: 'butt', lineJoin: 'miter', width: 0.988}),fill: new ol.style.Fill({color: 'rgba(43,131,186,0.356)'}),
         text: createTextStyle(feature, resolution, labelText, labelFont,
                               labelFill, placement, bufferColor,
                               bufferWidth)
@@ -37,8 +37,8 @@ var style_WPPIndonesia_2 = function(feature, resolution){
     var offsetX = 0;
     var offsetY = 0;
     var placement = 'point';
-    if (feature.get("Keterangan") !== null) {
-        labelText = String(feature.get("Keterangan"));
+    if (feature.get("LEBEL") !== null) {
+        labelText = String(feature.get("LEBEL"));
     }
     
     var style = categories_WPPIndonesia_2(feature, value, size, resolution, labelText,
